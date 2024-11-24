@@ -8,9 +8,12 @@
         body { 
             font-family: Arial, sans-serif; 
             text-align: center; 
-            background-color: #84b3e9; 
+            background-color: #a9c3e0; 
         }
-        h1 { color: #4a3533; }
+        h1 { 
+            color: #4a3533; 
+            min-height: 50px;
+        }
         p { color: #333; }
         
         /* Animation CSS */
@@ -24,13 +27,51 @@
             height: auto;
             animation: bounce 2s infinite;
         }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            background-color: #0c5ebb;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #357ab8;
+        }
     </style>
 </head>
 <body>
-    <img src="images/drp.jpeg" alt="Happy Birthday!">
+    <h1>MR. IITIAN SATYAM RAJ PUROHIT</h1>
+    <img src="images/srp.jpg" alt="Happy Birthday!">
 
-    <h1>Shree Shree 1008 Dhruva Nandji Maharaj ko Happy Birthday!</h1>
+    <h1 id="animatedText"></h1>
+    <button id="nextButton">Next</button>
+
     <h3>आपके जन्मदिन पर ढेर सारी खुशियाँ और आनंद की शुभकामनाएँ!</h3>
 
+    <script>
+        // Full sentence to display
+        const sentence = "Shree Shree 1008 Satya Nandji Maharaj ko Happy Birthday!";
+        const words = sentence.split(" "); // Split sentence into words
+        let currentWordIndex = 0; // Track the current word index
+
+        const animatedText = document.getElementById("animatedText");
+        const nextButton = document.getElementById("nextButton");
+
+        // Function to handle displaying the next word
+        nextButton.addEventListener("click", () => {
+            if (currentWordIndex < words.length) {
+                animatedText.innerHTML += (currentWordIndex === 0 ? "" : " ") + words[currentWordIndex];
+                currentWordIndex++;
+            } else {
+                nextButton.disabled = true; // Disable button after completing the sentence
+                nextButton.innerText = "Completed!";
+            }
+        });
+    </script>
 </body>
 </html>
